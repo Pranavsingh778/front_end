@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Layout like image</title>
+  <style>
+    /* Reset + predictable box sizing */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; font-family: Georgia, "Times New Roman", serif; }
+
+    /* overall page container */
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+    }
+
+    /* Top gray header with centered big heading */
+    header.site-header {
+      background: #8b8b8b; /* grey */
+      color: #fff;
+      text-align: center;
+      padding: 14px 10px;
+      border-bottom: 6px solid rgba(0,0,0,0.8); /* thin dark bar under header */
+    }
+    header.site-header h1 {
+      font-size: 44px;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: 1px;
+      margin: 0;
+    }
+
+    /* thin black strip under header (already added via border-bottom above)
+       and green navigation bar below it */
+    nav.main-nav {
+      background: #036400; /* deep green */
+      color: #fff;
+      padding: 6px 14px;
+      font-size: 18px;
+      border-bottom: 2px solid #013800; /* darker green edge */
+    }
+    nav.main-nav .menu {
+      display: inline-flex;
+      gap: 18px;
+      color: #d9d9d9;
+      font-weight: 600;
+    }
+
+    /* Main area: left sidebar (cyan), content area (light beige) */
+    .container {
+      flex: 1 0 auto; /* expand to fill available space */
+      display: flex;
+      align-items: stretch;
+      min-height: 520px; /* approximate tall content like image */
+      border-left: 6px solid transparent; /* spacing to match screenshot edges */
+      border-right: 6px solid transparent;
+    }
+
+    aside.sidebar {
+      width: 160px; /* narrow left column */
+      background: #00f0f0; /* bright cyan-ish */
+      padding: 18px 12px;
+      color: #000;
+      font-size: 20px;
+    }
+
+    main.content {
+      flex: 1;
+      background: #efe6b5; /* light beige */
+      padding: 18px 28px;
+      position: relative;
+      text-align: center;
+      font-size: 20px;
+      color: #111;
+    }
+    main.content .right-title {
+      margin-top: 4px;
+      font-size: 24px;
+      font-weight: 500;
+    }
+
+    /* thin red footer ribbon then large black footer area below */
+    .thin-footer {
+      background: #ff0b0b; /* red ribbon */
+      padding: 8px 10px;
+      text-align: center;
+      font-size: 18px;
+      color: #2b0000;
+      font-weight: 600;
+    }
+
+    footer.big-footer {
+      background: #0b0b0b; /* almost black */
+      color: #fff;
+      padding: 50px 12px;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    /* small responsive adjustments */
+    @media (max-width: 640px) {
+      header.site-header h1 { font-size: 28px; }
+      aside.sidebar { width: 110px; font-size: 16px; padding: 10px; }
+      main.content { padding: 12px; font-size: 16px; }
+      nav.main-nav { font-size: 16px; padding: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="site-header" role="banner">
+      <h1>Heading</h1>
+    </header>
+
+    <!-- small black strip under header visually created by header's border-bottom -->
+    <nav class="main-nav" role="navigation" aria-label="Main menu">
+      <div class="menu">
+        <span>Home</span>
+        <span>about</span>
+        <span>Services</span>
+      </div>
+    </nav>
+
+    <div class="container" role="main">
+      <aside class="sidebar" aria-label="Left column">
+        left content
+      </aside>
+
+      <main class="content" aria-label="Primary content">
+        <div class
