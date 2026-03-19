@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Temperature Converter</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background: url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6') no-repeat center center/cover;
+        text-align: center;
+        color: #000;
+    }
+
+    h1 {
+        margin-top: 30px;
+        font-size: 40px;
+        text-decoration: underline;
+    }
+
+    h3 {
+        text-decoration: underline;
+        margin-bottom: 30px;
+    }
+
+    .box {
+        width: 400px;
+        margin: auto;
+        padding: 20px;
+        border: 2px solid black;
+        background: rgba(255,255,255,0.6);
+    }
+
+    label {
+        font-size: 18px;
+        display: block;
+        margin-top: 15px;
+    }
+
+    input {
+        width: 80%;
+        padding: 8px;
+        margin-top: 5px;
+        font-size: 16px;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>Temperature Converter</h1>
+<h3>Celcius to Fahrenheit to Kelvin</h3>
+
+<div class="box">
+    <h2>Temperature Converter</h2>
+
+    <label>Celcius:-</label>
+    <input type="number" id="celsius" oninput="convertFromCelsius()">
+
+    <label>Fahrenheit:-</label>
+    <input type="number" id="fahrenheit" oninput="convertFromFahrenheit()">
+
+    <label>Kelvin:-</label>
+    <input type="number" id="kelvin" oninput="convertFromKelvin()">
+</div>
+
+<script>
+function convertFromCelsius() {
+    let c = parseFloat(document.getElementById("celsius").value);
+    if (!isNaN(c)) {
+        document.getElementById("fahrenheit").value = (c * 9/5 + 32).toFixed(2);
+        document.getElementById("kelvin").value = (c + 273.15).toFixed(2);
+    }
+}
+
+function convertFromFahrenheit() {
+    let f = parseFloat(document.getElementById("fahrenheit").value);
+    if (!isNaN(f)) {
+        let c = (f - 32) * 5/9;
+        document.getElementById("celsius").value = c.toFixed(2);
+        document.getElementById("kelvin").value = (c + 273.15).toFixed(2);
+    }
+}
+
+function convertFromKelvin() {
+    let k = parseFloat(document.getElementById("kelvin").value);
+    if (!isNaN(k)) {
+        let c = k - 273.15;
+        document.getElementById("celsius").value = c.toFixed(2);
+        document.getElementById("fahrenheit").value = (c * 9/5 + 32).toFixed(2);
+    }
+}
+</script>
+
+</body>
+</html>
